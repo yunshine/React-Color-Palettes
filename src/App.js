@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-// import { Route, Switch, NavLink } from 'react-router-dom';
+import Palette from './Palette';
+import seedColors from './seedColors';
 // import -something-, { -something- } from './-something-';
-import './App.css';
+// import { Route, Switch, NavLink } from 'react-router-dom';
+// import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <h1>Testing App Component...</h1>
-        {/* <-something- /> */}
+        <Palette {...seedColors[4]}/>
 
         {/* <NavLink exact activeClassName="active-link" to="/-something-">-some-text-here-</NavLink> */}
 
