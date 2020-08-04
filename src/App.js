@@ -8,10 +8,9 @@ import { generatePalette } from './colorHelpers';
 
 class App extends Component {
   render() {
-    console.log(generatePalette(seedColors[4]));
     return (
       <div className="App">
-        <Palette {...seedColors[4]}/>
+        <Palette palette={generatePalette(seedColors[0])}/>
 
         {/* <NavLink exact activeClassName="active-link" to="/-something-">-some-text-here-</NavLink> */}
 

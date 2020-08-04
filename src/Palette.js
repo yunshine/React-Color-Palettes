@@ -31,8 +31,8 @@ class Palette extends Component {
   // => This is the way and the syntax to update an existing state, not:   this.setState({ score: this.state.score + 3 });
 
   render() {
-    const colorBoxes = this.props.colors.map(color => (
-      <ColorBox background={color.color} name={color.name} />
+    const colorBoxes = this.props.palette.colors[300].map(color => (
+      <ColorBox background={color.hex} name={color.name} />
     ));
 
     return (
