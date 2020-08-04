@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; // imrc is the shortcut...
+import ColorBox from './ColorBox';
 // import -something-, { -something- } from './-something-';
 // import './Palette.css';
 // import { Route, Switch, NavLink } from 'react-router-dom';
@@ -30,11 +31,15 @@ class Palette extends Component {
   // => This is the way and the syntax to update an existing state, not:   this.setState({ score: this.state.score + 3 });
 
   render() {
+    const colorBoxes = this.props.colors.map(color => (
+      <ColorBox background={color.color} name={color.name} />
+    ));
+
     return (
       <div className="Palette">
         {/* Navbar will go here... */}
         <div className="Palette-colors">
-          {/* A bunch of color boxes will go here... */}
+          {colorBoxes}
         </div>
           {/* Footer will go here... */}
       </div>
