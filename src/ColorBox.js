@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-// import -something-, { -something- } from './-something-';
 import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-// import { Route, Switch, NavLink } from 'react-router-dom';
-
-// import { v4 as uuidv4 } from 'uuid'; // for creating unique IDs with uuidv4();
-// npm install axios (for API requests) in terminal???
 
 class ColorBox extends Component {
     constructor(props) {

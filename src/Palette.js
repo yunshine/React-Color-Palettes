@@ -1,10 +1,10 @@
 import React, { Component } from 'react'; // imrc is the shortcut...
+import Navbar from './Navbar';
 // import -something-, { -something- } from './-something-';
 import 'rc-slider/assets/index.css';
 import './Palette.css';
 // import { Route, Switch, NavLink } from 'react-router-dom';
 import ColorBox from './ColorBox';
-import Slider from 'rc-slider';
 
 class Palette extends Component {
   // static defaultProps = {
@@ -30,10 +30,8 @@ class Palette extends Component {
 
     return (
       <div className="Palette">
-        <div className="slider">
-          <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.changeLevel} />
-        </div>
         {/* Navbar will go here... */}
+        <Navbar level={level} changeLevel={this.changeLevel} />
         <div className="Palette-colors">
           {colorBoxes}
         </div>
