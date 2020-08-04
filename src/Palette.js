@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; // imrc is the shortcut...
 import ColorBox from './ColorBox';
 // import -something-, { -something- } from './-something-';
-// import './Palette.css';
+import './Palette.css';
 // import { Route, Switch, NavLink } from 'react-router-dom';
 
 // import { v4 as uuidv4 } from 'uuid'; // for creating unique IDs with uuidv4();

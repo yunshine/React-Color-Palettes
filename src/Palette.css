@@ -1,3 +1,7 @@
 .Palette {
-  height: ;
+  height: 100vh;
+}
+
+.Palette-colors {
+  height: 90%;
 }
