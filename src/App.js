@@ -9,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Testing App Component...</h1>
         <Palette {...seedColors[4]}/>
 
         {/* <NavLink exact activeClassName="active-link" to="/-something-">-some-text-here-</NavLink> */}
