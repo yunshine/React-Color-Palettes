@@ -1,42 +1,36 @@
 import React, { Component } from 'react'; // imrc is the shortcut...
-import ColorBox from './ColorBox';
 // import -something-, { -something- } from './-something-';
 import './Palette.css';
+import 'rc-slider/assets/index.css';
 // import { Route, Switch, NavLink } from 'react-router-dom';
-
-// import { v4 as uuidv4 } from 'uuid'; // for creating unique IDs with uuidv4();
-// npm install axios (for API requests) in terminal???
+import ColorBox from './ColorBox';
+import Slider from 'rc-slider';
 
 class Palette extends Component {
   // static defaultProps = {
   //   key: value,
   // };
   
-  // constructor(props) {
-  //   super(props);
-    // this.state = { key: value };
-    // this.handleClick = this.handleClick.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { level: 500 };
+    this.changeLevel = this.changeLevel.bind(this);
+  }
 
-  // Palette() {
-  //   this.setState({ key: value });
-  // }
-
-  // handleClick() {
-  //   this.newFunction();
-  //   this.setState(oldState => {
-  //     return { score: oldState + 3 };
-  //   })
-  // }
-  // => This is the way and the syntax to update an existing state, not:   this.setState({ score: this.state.score + 3 });
+  changeLevel(level) {
+    this.setState({ level });
+  }
 
   render() {
-    const colorBoxes = this.props.palette.colors[300].map(color => (
+    const { colors } = this.props.palette;
+    const { level } = this.state;
+    const colorBoxes = colors[level].map(color => (
       <ColorBox background={color.hex} name={color.name} />
     ));
 
     return (
       <div className="Palette">
+        <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.changeLevel} />
         {/* Navbar will go here... */}
         <div className="Palette-colors">
           {colorBoxes}
