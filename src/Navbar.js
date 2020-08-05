@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'rc-slider';
+import Select from '@material-ui/core/Select';
 import 'rc-slider/assets/index.css';
 import './Navbar.css';
 
@@ -16,6 +17,9 @@ class Navbar extends Component {
           <div className="slider">
             <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={changeLevel} />
           </div>
+        </div>
+        <div className="select-container">
+          
         </div>
       </nav>
     );
