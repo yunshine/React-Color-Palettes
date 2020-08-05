@@ -7,11 +7,21 @@ import { Route, Switch, NavLink, Link } from 'react-router-dom';
 // import './App.css';
 
 class App extends Component {
+  findPalette(id) {
+    return seedColors.find(function(palette) {
+      return palette.id === id;
+    });
+  }
+  
   render() {
     return (
       <Switch> 
         <Route exact path="/" render={() => <h1>Palette List test...</h1>} />
-        <Route exact path="/palette/:id" render={() => <h1>indivudual palette test...</h1>} />
+        <Route 
+          exact 
+          path="/palette/:id" 
+          render={routeProps => <Palette palette={generatePalette(this.findPalette(routeProps.match.params.id))} />} 
+        />
       </Switch>
 
       // <div className="App">
