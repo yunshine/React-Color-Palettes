@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Palette palette={generatePalette(seedColors[0])}/>
+        <Palette palette={generatePalette(seedColors[1])}/>
 
         {/* <NavLink exact activeClassName="active-link" to="/-something-">-some-text-here-</NavLink> */}
 

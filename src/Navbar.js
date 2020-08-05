@@ -12,15 +12,19 @@ import './Navbar.css';
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = { format: "hex", open: true };
-    this.handleChange = this.handleChange.bind(this);
-    // this.changeFormat = this.changeFormat.bind(this);
+    this.state = { format: "hex", open: false };
+    this.handleFormatChange = this.handleFormatChange.bind(this);
+    this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
-handleChange(e) {
-  this.setState({format: e.target.value});
-  this.props.handleChange(e.target.value);
-}
+  handleFormatChange(e) {
+    this.setState({ format: e.target.value, open: true });
+    this.props.handleChange(e.target.value);
+  }
+
+  closeSnackbar() {
+    this.setState({ open: false });
+  }
 
   render() {
     const { level, changeLevel } = this.props;
@@ -37,7 +41,7 @@ handleChange(e) {
           </div>
         </div>
         <div className="select-container">
-          <Select value={format} onChange={this.handleChange}>
+          <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value="hex">Hex - #57c5f7</MenuItem>
             <MenuItem value="rgb">RGB - rgb(228,118,214)</MenuItem>
             <MenuItem value="rgba">RGBA - rgb(35,168,145, 1.0)</MenuItem>
@@ -46,11 +50,12 @@ handleChange(e) {
     <Snackbar 
       anchorOrigin={{vertical: "bottom", horizontal: "left"}} 
       open={this.state.open} 
+      onClose={this.closeSnackbar} 
       autoHideDuration={2500} 
-      message={<span id='message-id'>Format changed to {this.state.format}.</span>} 
+      message={<span id='message-id'>Format changed to {format.toUpperCase()}.</span>} 
       ContentProps={{"aria-describedby": "message-id"}} 
       action={[
-        <IconButton>
+        <IconButton onClick={this.closeSnackbar} color="inherit" key="close" arial-label="close">
           <CloseIcon />
         </IconButton>
       ]} />
