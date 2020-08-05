@@ -3,26 +3,27 @@ import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/styles';
 
 const styles = {
-  main: {
-    backgroundColor: "purple",
-    border: "3px solid teal",
-    "& h1": {
-      color: "white",
-    }
+  root: {
+
+  },
+  colors: {
+
   }, 
-  secondary: {
-    backgroundColor: "pink",
+  title: {
+
+  }, 
+  emoji: {
+
   }
 }
 
 function MiniPalette(props) {
-  const {classes} = props;
-  console.log(classes);
+  const { classes, paletteName, emoji } = props;
   
   return (
-    <div className={`MiniPalette ${classes.main}`}>
-      <h1>MiniPalette</h1>
-      <h2 className={classes.secondary}>secondary classes... styles...</h2>
+    <div className={`MiniPalette ${classes.root}`}>
+      <div className={classes.colors}></div>
+  <h5 className={classes.title}>{paletteName} <span className={classes.emoji}>{emoji}</span></h5>
     </div>
   )
 }
