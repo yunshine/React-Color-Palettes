@@ -19,7 +19,7 @@ handleChange(e) {
 }
 
   render() {
-    const { level, changeLevel, handleChange } = this.props;
+    const { level, changeLevel } = this.props;
     const { format } = this.state;
     return (
       <nav className="Navbar">
