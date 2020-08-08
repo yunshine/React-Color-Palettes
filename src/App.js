@@ -5,7 +5,7 @@ import Palette from './Palette';
 import SingleColorPalette from './SingleColorPalette';
 import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
-import { Route, Switch, NavLink, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 // import './App.css';
 
 class App extends Component {

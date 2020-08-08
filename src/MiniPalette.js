@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { withTheme } from '@material-ui/styles';
+// import { withTheme } from '@material-ui/styles';
 
 const styles = {
   root: {

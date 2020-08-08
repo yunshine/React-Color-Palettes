@@ -1,8 +1,7 @@
-import React, { Component } from 'react'; // imrc is the shortcut...
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
-// import -something-, { -something- } from './-something-';
-import './PaletteList.css'; // make a CSS file for this component..
+import './PaletteList.css';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -60,12 +59,4 @@ class PaletteList extends Component {
 }
 
 export default withStyles(styles) (PaletteList);
-  // static defaultProps = {
-  //   key: value,
-  // };
-  
-  // constructor(props) {
-  //   super(props);
-    // this.state = { key: value };
-    // this.handleClick = this.handleClick.bind(this);
-  // }
+ 
