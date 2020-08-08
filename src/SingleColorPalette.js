@@ -11,15 +11,26 @@ class SingleColorPalette extends Component {
   //   key: value,
   // };
   
-  // constructor(props) {
-  //   super(props);
-    // this.state = { key: value };
-    // this.handleClick = this.handleClick.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this._shades = this.gatherShades(this.props.palette, this.props.colorId);
+    // this.state = { shades: this.gatherShades(this.props.palette) };
+    console.log(this._shades);
+    this.gatherShades = this.gatherShades.bind(this);
+  }
 
-  // SingleColorPalette() {
-  //   this.setState({ key: value });
-  // }
+  gatherShades(palette, colorToFilterBy) {
+    let shades = [];
+    let allColors = palette.colors;
+
+    for(let key in allColors) {
+      shades = shades.concat(
+        allColors[key].filter(color => color.id === colorToFilterBy)
+      )
+    }
+    return shades.slice(1);
+    // this.setState({ key: value });
+  }
 
   // handleClick() {
   //   this.newFunction();
