@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; // imrc is the shortcut...
 // import -something-, { -something- } from './-something-';
-import './SingleColorPalette.css'; // make a CSS file for this component..
+// import './SingleColorPalette.css'; // make a CSS file for this component..
 // import { Route, Switch, NavLink } from 'react-router-dom';
 
 // import { v4 as uuidv4 } from 'uuid'; // for creating unique IDs with uuidv4();
