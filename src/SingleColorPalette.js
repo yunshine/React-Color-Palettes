@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; // imrc is the shortcut...
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
+import PaletteFooter from './PaletteFooter';
 // import -something-, { -something- } from './-something-';
 // import './SingleColorPalette.css'; // make a CSS file for this component..
 // import { Route, Switch, NavLink } from 'react-router-dom';
@@ -38,15 +39,17 @@ class SingleColorPalette extends Component {
 
   render() {
     const { format } = this.state;
+    const {paletteName, emoji} = this.props.palette;
     const colorBoxes = this._shades.map(color => (
       <ColorBox key={color.id} name={color.name} background={color[format]} showLink={false} />
     ));
     return (
       <div className="SingleColorPalette Palette">
-        <Navbar handleChange={this.changeFormat} />
+        <Navbar handleChange={this.changeFormat} showingAllColors={false} />
         <div className="Palette-colors">
           {colorBoxes}
         </div>
+        <PaletteFooter paletteName={paletteName} emoji={emoji} />
       </div>
     );
   }
