@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import -something-, { -something- } from './-something-';
 import PaletteList from './PaletteList';
 import Palette from './Palette';
 import SingleColorPalette from './SingleColorPalette';
