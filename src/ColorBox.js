@@ -90,7 +90,7 @@ const styles ={
     top: "0",
     bottom: "0",
     display: "flex",
-    flexdirection: "column",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     fontSize: "4rem",
@@ -147,7 +147,7 @@ class ColorBox extends Component {
         
         <div style={{ background }} className={`${classes.copyOverlay} ${copied && classes.showOverlay}`} />
         
-        <div className={`${copyMsg} ${copied && classes.showMessage}`}>
+        <div className={`${classes.copyMsg} ${copied && classes.showMessage}`}>
           <h1 className={isLightColor && "dark-text"}>copied!</h1>
           {/* <p className={isLightColor && "dark-text"}>{this.props.background}</p> */}
           <p className={classes.copyText}>{this.props.background}</p>
