@@ -97,9 +97,23 @@ class NewPaletteForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   };
 
+  componentDidMount() {
+    // custom rule will have name 'isPasswordMatch'
+    ValidatorForm.addValidationRule('isColorNameUnique', (value) =>
+      this.state.colors.every(
+        ({name}) => name.toLowerCase() !== value.toLowerCase()
+      )
+    );
+    ValidatorForm.addValidationRule('isColorUnique', (value) =>
+    this.state.colors.every(
+      ({color}) => color !== this.state.currentColor
+    )
+  );
+}
+
   addNewColor() {
     const newColor = {color: this.state.currentColor, name: this.state.newName};
-    this.setState({colors: [...this.state.colors, newColor]});
+    this.setState({ colors: [...this.state.colors, newColor], newName: "" });
   }
 
   handleChange(evt) {
@@ -172,6 +186,8 @@ class NewPaletteForm extends React.Component {
             <TextValidator 
             value={this.state.newName} 
             onChange={this.handleChange} 
+            validators={["required", "isColorNameUnique", "isColorUnique"]} 
+            errorMessages={["This field is required", "Color name must be unique", "Color must be unlique"]}
             />
             <Button 
             variant="contained" 
