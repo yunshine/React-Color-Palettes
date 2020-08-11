@@ -82,20 +82,28 @@ const styles = theme => ({
   },
 });
 
+
 class NewPaletteForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
       open: true, 
       currentColor: "turquoise",
-      colors: ["blue", "purple", "orange"],
+      newName: "",
+      colors: [],
     }
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   };
 
   addNewColor() {
-    this.setState({colors: [...this.state.colors, this.state.currentColor]});
+    const newColor = {color: this.state.currentColor, name: this.state.newName};
+    this.setState({colors: [...this.state.colors, newColor]});
+  }
+
+  handleChange(evt) {
+    this.setState({newName: evt.target.value});
   }
 
   handleDrawerOpen = () => {
@@ -159,14 +167,21 @@ class NewPaletteForm extends React.Component {
             <Button variant="contained" color="primary">Random Color</Button>
           </div>
           <ChromePicker color={this.state.currentColor} onChangeComplete={this.updateCurrentColor} />
+
+          <ValidatorForm onSubmit={this.addNewColor}>
+            <TextValidator 
+            value={this.state.newName} 
+            onChange={this.handleChange} 
+            />
             <Button 
             variant="contained" 
             color="primary" 
             style={{backgroundColor: this.state.currentColor}} 
-            onClick={this.addNewColor}
+            type="submit" 
             >
               Add Color
             </Button>
+          </ValidatorForm>
         </Drawer>
         
         <main
@@ -176,7 +191,7 @@ class NewPaletteForm extends React.Component {
         >
           <div className={classes.drawerHeader} />
             {this.state.colors.map(color => (
-              <DraggableColorBox color={color} />
+              <DraggableColorBox color={color.color} name={color.name} />
             ))}
         </main>
 
