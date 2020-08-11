@@ -10,6 +10,8 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Button from "@material-ui/core/Button";
+import { ChromePicker } from 'react-color';
 
 // import -something-, { -something- } from './-something-';
 // import './NewPaletteForm.css'; // make a CSS file for this component..
@@ -18,7 +20,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 // import { v4 as uuidv4 } from 'uuid'; // for creating unique IDs with uuidv4();
 // npm install axios (for API requests) in terminal???
 
-const drawerWidth = 240;
+const drawerWidth = 400;
 
 const styles = theme => ({
   root: {
@@ -132,7 +134,14 @@ class NewPaletteForm extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <p>list stuff was here...</p>
+          <Typography variant="h4">Create a Palette</Typography>
+          <div>
+            <Button variant="contained" color="secondary">Clear Palette</Button>
+            <Button variant="contained" color="primary">Random Color</Button>
+          </div>
+          <ChromePicker color="turquoise" onChangeComplete={(newColor) => console.log(newColor)} />
+            <Button variant="contained" color="primary">Add 
+            Color</Button>
         </Drawer>
         <main
           className={classNames(classes.content, {
