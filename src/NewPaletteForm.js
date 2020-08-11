@@ -64,6 +64,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
+    height: "calc(100vh - 64px)",
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -173,11 +174,9 @@ class NewPaletteForm extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <ul>
             {this.state.colors.map(color => (
               <DraggableColorBox color={color} />
             ))}
-          </ul>
         </main>
 
       </div>
