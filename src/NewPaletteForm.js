@@ -1,4 +1,5 @@
 import React from 'react';
+import DraggableColorBox from './DraggableColorBox';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -85,9 +86,15 @@ class NewPaletteForm extends React.Component {
     this.state = { 
       open: true, 
       currentColor: "turquoise",
+      colors: ["blue", "purple", "orange"],
     }
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
+    this.addNewColor = this.addNewColor.bind(this);
   };
+
+  addNewColor() {
+    this.setState({colors: [...this.state.colors, this.state.currentColor]});
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -150,17 +157,29 @@ class NewPaletteForm extends React.Component {
             <Button variant="contained" color="primary">Random Color</Button>
           </div>
           <ChromePicker color={this.state.currentColor} onChangeComplete={this.updateCurrentColor} />
-            <Button variant="contained" color="primary" style={{backgroundColor: this.state.currentColor}}>Add 
-            Color</Button>
+            <Button 
+            variant="contained" 
+            color="primary" 
+            style={{backgroundColor: this.state.currentColor}} 
+            onClick={this.addNewColor}
+            >
+              Add Color
+            </Button>
         </Drawer>
+        
         <main
           className={classNames(classes.content, {
             [classes.contentShift]: open,
           })}
         >
           <div className={classes.drawerHeader} />
-          <p>testing drawer...</p>
+          <ul>
+            {this.state.colors.map(color => (
+              <DraggableColorBox color={color} />
+            ))}
+          </ul>
         </main>
+
       </div>
     );
   }
