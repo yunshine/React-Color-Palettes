@@ -111,6 +111,11 @@ class NewPaletteForm extends React.Component {
       ({color}) => color !== this.state.currentColor
     )
   );
+  ValidatorForm.addValidationRule('isPaletteNameUnique', (value) =>
+  this.props.palettes.every(
+    ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+  )
+);
 }
 
   handleSubmit() {
@@ -172,7 +177,14 @@ class NewPaletteForm extends React.Component {
             </Typography>
 
             <ValidatorForm onSubmit={this.handleSubmit}>
-              <TextValidator label="Palette Name" name="newPaletteName" value={this.state.newPaletteName} onChange={this.handleChange} />
+              <TextValidator 
+              label="Palette Name" 
+              name="newPaletteName" 
+              value={this.state.newPaletteName} 
+              onChange={this.handleChange} 
+              validators={["required", "isPaletteNameUnique"]} 
+              errorMessages={["This field is required", "Palette name must be unique"]}
+              />
               <Button variant="contained" color="primary" type="submit">Save Palette</Button>
             </ValidatorForm>
 
