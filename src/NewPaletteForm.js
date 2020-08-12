@@ -84,7 +84,7 @@ class NewPaletteForm extends React.Component {
       open: true, 
       currentColor: "turquoise",
       newColorName: "",
-      colors: [],
+      colors: this.props.palettes[0].colors,
       newPaletteName: "",
     }
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
