@@ -1,5 +1,6 @@
 import React from 'react';
 import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -243,9 +244,7 @@ class NewPaletteForm extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-            {this.state.colors.map(color => (
-              <DraggableColorBox key={color.name} color={color.color} name={color.name} handleClick={() => this.removeColor(color.name)} />
-            ))}
+            <DraggableColorList colors={this.state.colors} removeColor={this.removeColor} />
         </main>
 
       </div>
