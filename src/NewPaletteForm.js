@@ -98,6 +98,7 @@ class NewPaletteForm extends React.Component {
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeColor = this.removeColor.bind(this);
   };
 
   componentDidMount() {
@@ -246,7 +247,6 @@ class NewPaletteForm extends React.Component {
           <div className={classes.drawerHeader} />
             <DraggableColorList colors={this.state.colors} removeColor={this.removeColor} />
         </main>
-
       </div>
     );
   }
