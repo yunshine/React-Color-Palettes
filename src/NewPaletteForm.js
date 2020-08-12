@@ -1,5 +1,4 @@
 import React from 'react';
-import DraggableColorBox from './DraggableColorBox';
 import DraggableColorList from './DraggableColorList';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,13 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ChromePicker } from 'react-color';
-
-// import -something-, { -something- } from './-something-';
-// import './NewPaletteForm.css'; // make a CSS file for this component..
-// import { Route, Switch, NavLink } from 'react-router-dom';
-
-// import { v4 as uuidv4 } from 'uuid'; // for creating unique IDs with uuidv4();
-// npm install axios (for API requests) in terminal???
+import { arrayMove } from 'react-sortable-hoc';
 
 const drawerWidth = 400;
 
@@ -157,6 +150,12 @@ class NewPaletteForm extends React.Component {
     this.setState({currentColor: newColor.hex});
   }
 
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ colors }) => ({
+      colors: arrayMove(colors, oldIndex, newIndex),
+    }));
+  };
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;
@@ -249,6 +248,7 @@ class NewPaletteForm extends React.Component {
             colors={this.state.colors} 
             removeColor={this.removeColor} 
             axis="xy" 
+            onSortEnd={this.onSortEnd} 
             />
         </main>
       </div>
