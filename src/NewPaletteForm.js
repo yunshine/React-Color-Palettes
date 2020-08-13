@@ -239,7 +239,7 @@ class NewPaletteForm extends React.Component {
             >
               Clear Palette
               </Button>
-            <Button variant="contained" color="primary" onClick={this.addRandomColor}>Random Color</Button>
+            <Button variant="contained" color="primary" onClick={this.addRandomColor} disabled={paletteIsFull}>Random Color</Button>
           </div>
           <ChromePicker color={this.state.currentColor} onChangeComplete={this.updateCurrentColor} />
 
@@ -254,7 +254,7 @@ class NewPaletteForm extends React.Component {
             <Button 
             variant="contained" 
             color="primary" 
-            style={{backgroundColor: this.state.currentColor}} 
+            style={{backgroundColor: paletteIsFull ? "grey" : this.state.currentColor}} 
             disabled={paletteIsFull} 
             type="submit" 
             >
