@@ -78,6 +78,9 @@ const styles = theme => ({
 
 
 class NewPaletteForm extends React.Component {
+  static defaultProps = {
+    maxColors: 20,
+  }
   constructor(props) {
     super(props);
     this.state = { 
@@ -171,8 +174,9 @@ class NewPaletteForm extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-    const { open } = this.state;
+    const { classes, maxColors } = this.props;
+    const { open, colors } = this.state;
+    const paletteIsFull = colors.length >= maxColors;
 
     return (
       <div className={classes.root}>
@@ -251,9 +255,10 @@ class NewPaletteForm extends React.Component {
             variant="contained" 
             color="primary" 
             style={{backgroundColor: this.state.currentColor}} 
+            disabled={paletteIsFull} 
             type="submit" 
             >
-              Add Color
+              {paletteIsFull ? "Palette is Full" : "Add Color"}
             </Button>
           </ValidatorForm>
         </Drawer>
