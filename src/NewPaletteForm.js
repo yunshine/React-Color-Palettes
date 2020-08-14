@@ -1,6 +1,7 @@
 import React from 'react';
 import DraggableColorList from './DraggableColorList';
 import classNames from 'classnames';
+import { Link } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -211,6 +212,9 @@ class NewPaletteForm extends React.Component {
               errorMessages={["This field is required", "Palette name must be unique"]}
               />
               <Button variant="contained" color="primary" type="submit">Save Palette</Button>
+              <Link exact to="/">
+                <Button variant="contained" color="secondary">Back to Palettes</Button>
+              </Link>
             </ValidatorForm>
 
           </Toolbar>
