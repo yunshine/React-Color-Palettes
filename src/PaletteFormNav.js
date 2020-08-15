@@ -18,14 +18,10 @@ import { ChromePicker } from 'react-color';
 import { arrayMove } from 'react-sortable-hoc';
 
 class PaletteFormNav extends Component {
-  // static defaultProps = {
-  //   key: value,
-  // };
-  
   constructor(props) {
     super(props);
     this.state = { newPaletteName: "" };
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +30,12 @@ class PaletteFormNav extends Component {
       ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
     )
   );
+  }
+
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
   }
 
   // PaletteFormNav() {
@@ -50,6 +52,7 @@ class PaletteFormNav extends Component {
 
   render() {
     const { classes, open } = this.props;
+    const { newPaletteName } = this.state;
     return (
       <div className="PaletteFormNav">
         <CssBaseline />
@@ -73,7 +76,7 @@ class PaletteFormNav extends Component {
               Persistent drawer
             </Typography>
 
-            <ValidatorForm onSubmit={this.handleSubmit}>
+            <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
               <TextValidator 
               label="Palette Name" 
               name="newPaletteName" 
@@ -95,4 +98,4 @@ class PaletteFormNav extends Component {
   }
 }
 
-export default PaletteFormNav; /// connect this component to App.js...
+export default PaletteFormNav;

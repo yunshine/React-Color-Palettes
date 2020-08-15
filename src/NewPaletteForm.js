@@ -127,9 +127,13 @@ class NewPaletteForm extends React.Component {
     this.setState({ colors: [...this.state.colors, randomColor] });
   }
 
-  handleSubmit() {
-    let newName = this.state.newPaletteName;
-    const newPalette = { paletteName: newName, colors: this.state.colors, id: newName.toLowerCase().replace(/ /g, "-") };
+  handleSubmit(newPaletteName) {
+    // let newName = this.state.newPaletteName;
+    const newPalette = { 
+      paletteName: newPaletteName, 
+      colors: this.state.colors, 
+      id: newPaletteName.toLowerCase().replace(/ /g, "-") 
+    };
     this.props.savePalette(newPalette);
     this.props.history.push("/");
   }
@@ -177,7 +181,7 @@ class NewPaletteForm extends React.Component {
 
     return (
       <div className={classes.root}>
-        <PaletteFormNav open={open} classes={classes} palettes={palettes} />
+        <PaletteFormNav open={open} classes={classes} handleSubmit={this.handleSubmit} palettes={palettes} />
         <Drawer
           className={classes.drawer}
           variant="persistent"
