@@ -83,10 +83,8 @@ class NewPaletteForm extends React.Component {
     super(props);
     this.state = { 
       open: true, 
-      newColorName: "",
       colors: this.props.palettes[0].colors,
     }
-    this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -94,20 +92,6 @@ class NewPaletteForm extends React.Component {
     this.clearColors = this.clearColors.bind(this);
     this.addRandomColor = this.addRandomColor.bind(this);
   };
-
-  componentDidMount() {
-    // custom rule will have name 'isPasswordMatch'
-    ValidatorForm.addValidationRule('isColorNameUnique', (value) =>
-      this.state.colors.every(
-        ({name}) => name.toLowerCase() !== value.toLowerCase()
-      )
-    );
-    ValidatorForm.addValidationRule('isColorUnique', (value) =>
-      this.state.colors.every(
-        ({color}) => color !== this.state.currentColor
-      )
-    );
-  }
 
   clearColors() {
     this.setState({ colors: [] });
@@ -132,8 +116,7 @@ class NewPaletteForm extends React.Component {
     this.props.history.push("/");
   }
 
-  addNewColor() {
-    const newColor = {color: this.state.currentColor, name: this.state.newColorName};
+  addNewColor(newColor) {
     this.setState({ colors: [...this.state.colors, newColor], newColorName: "" });
   }
 
@@ -156,11 +139,6 @@ class NewPaletteForm extends React.Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
-
-  updateCurrentColor(newColor) {
-    // console.log(newColor);
-    this.setState({currentColor: newColor.hex});
-  }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState(({ colors }) => ({
@@ -202,7 +180,7 @@ class NewPaletteForm extends React.Component {
               </Button>
             <Button variant="contained" color="primary" onClick={this.addRandomColor} disabled={paletteIsFull}>Random Color</Button>
           </div>
-          <ColorPickerForm paletteIsFull={paletteIsFull} />
+          <ColorPickerForm paletteIsFull={paletteIsFull} addNewColor={this.addNewColor} />
         </Drawer>
         
         <main

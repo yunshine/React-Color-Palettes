@@ -17,8 +17,39 @@ class ColorPickerForm extends Component {
   
   constructor(props) {
     super(props);
-    this.state = { currentColor: "turquoise", };
-    this.handleClick = this.handleClick.bind(this);
+    this.state = { currentColor: "turquoise", newColorName: "", };
+    this.updateCurrentColor = this.updateCurrentColor.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
+  componentDidMount() {
+    // custom rule will have name 'isPasswordMatch'
+    ValidatorForm.addValidationRule('isColorNameUnique', (value) =>
+      this.state.colors.every(
+        ({name}) => name.toLowerCase() !== value.toLowerCase()
+      )
+    );
+    ValidatorForm.addValidationRule('isColorUnique', (value) =>
+      this.state.colors.every(
+        ({color}) => color !== this.state.currentColor
+      )
+    );
+  }
+
+  updateCurrentColor(newColor) {
+    this.setState({currentColor: newColor.hex});
+  }
+
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
+  }
+
+  handleSubmit() {
+    const newColor = {color: this.state.currentColor, name: this.state.newColorName};
+    this.props.addNewColor(newColor);
   }
 
   render() {
@@ -27,7 +58,7 @@ class ColorPickerForm extends Component {
       <div className="ColorPickerForm">
         <ChromePicker color={this.state.currentColor} onChangeComplete={this.updateCurrentColor} />
 
-        <ValidatorForm onSubmit={this.addNewColor}>
+        <ValidatorForm onSubmit={this.handleSubmit} ref="form">
           <TextValidator 
           value={this.state.newColorName} 
           name="newColorName" 
