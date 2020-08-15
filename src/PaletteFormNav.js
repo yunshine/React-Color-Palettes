@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PaletteMetaForm from "./PaletteMetaForm";
 import classNames from 'classnames';
 import { Link } from "react-router-dom";
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -90,18 +91,10 @@ class PaletteFormNav extends Component {
               Create a Palette
             </Typography>
           </Toolbar>
+          
             <div classname={classes.navtBns}>
-              <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
-                <TextValidator 
-                label="Palette Name" 
-                name="newPaletteName" 
-                value={this.state.newPaletteName} 
-                onChange={this.handleChange} 
-                validators={["required", "isPaletteNameUnique"]} 
-                errorMessages={["This field is required", "Palette name must be unique"]}
-                />
-                <Button variant="contained" color="primary" type="submit">Save Palette</Button>
-              </ValidatorForm>
+   
+              <PaletteMetaForm />
               <Link exact to="/">
                 <Button variant="contained" color="secondary">Back to Palettes</Button>
               </Link>
