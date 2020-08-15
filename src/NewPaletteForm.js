@@ -10,8 +10,6 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from "@material-ui/core/Button";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { ChromePicker } from 'react-color';
 import { arrayMove } from 'react-sortable-hoc';
 
 const drawerWidth = 400;
@@ -180,7 +178,7 @@ class NewPaletteForm extends React.Component {
               </Button>
             <Button variant="contained" color="primary" onClick={this.addRandomColor} disabled={paletteIsFull}>Random Color</Button>
           </div>
-          <ColorPickerForm paletteIsFull={paletteIsFull} addNewColor={this.addNewColor} />
+          <ColorPickerForm paletteIsFull={paletteIsFull} colors={colors} addNewColor={this.addNewColor} />
         </Drawer>
         
         <main
