@@ -51,14 +51,6 @@ class PaletteFormNav extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    ValidatorForm.addValidationRule('isPaletteNameUnique', (value) =>
-    this.props.palettes.every(
-      ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-    )
-  );
-  }
-
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value
@@ -66,8 +58,7 @@ class PaletteFormNav extends Component {
   }
 
   render() {
-    const { classes, open } = this.props;
-    const { newPaletteName } = this.state;
+    const { classes, open, palettes, handleSubmit } = this.props;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -94,7 +85,7 @@ class PaletteFormNav extends Component {
           
             <div classname={classes.navtBns}>
    
-              <PaletteMetaForm />
+              <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
               <Link exact to="/">
                 <Button variant="contained" color="secondary">Back to Palettes</Button>
               </Link>
