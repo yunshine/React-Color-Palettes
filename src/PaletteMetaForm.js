@@ -65,7 +65,7 @@ class PaletteMetaForm extends Component {
 
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.props.hideForm} color="primary">
               Cancel
             </Button>
             <Button variant="contained" color="primary" type="submit">Save Palette</Button>
