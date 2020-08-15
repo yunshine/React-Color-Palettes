@@ -41,45 +41,37 @@ class PaletteMetaForm extends Component {
     const { newPaletteName } = this.state;
 
     return (
-      <div>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          Open form dialog
-        </Button>
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address here. We will send
-              updates occasionally.
-            </DialogContentText>
-
-            <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
-                <TextValidator 
-                label="Palette Name" 
-                name="newPaletteName" 
-                value={newPaletteName} 
-                onChange={this.handleChange} 
-                validators={["required", "isPaletteNameUnique"]} 
-                errorMessages={["This field is required", "Palette name must be unique"]}
-                />
-                <Button variant="contained" color="primary" type="submit">Save Palette</Button>
-              </ValidatorForm>
+      <Dialog
+        open={this.state.open}
+        onClose={this.handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
+        <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
+        <DialogContent>
+          <DialogContentText>
+            Please enter a unique name for this palette.
+          </DialogContentText>
+            <TextValidator 
+            label="Palette Name" 
+            name="newPaletteName" 
+            value={newPaletteName} 
+            fullWidth 
+            margin="normal" 
+            onChange={this.handleChange} 
+            validators={["required", "isPaletteNameUnique"]} 
+            errorMessages={["This field is required", "Palette name must be unique"]}
+            />
 
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
-            </Button>
+            <Button variant="contained" color="primary" type="submit">Save Palette</Button>
           </DialogActions>
-        </Dialog>
-      </div>
+        </ValidatorForm>
+      </Dialog>
     );
   }
 }
