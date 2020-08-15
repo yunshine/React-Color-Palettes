@@ -11,7 +11,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 class PaletteMetaForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, newPaletteName: "" };
+    this.state = { open: true, newPaletteName: "" };
     this.handleChange = this.handleChange.bind(this);
   }
   

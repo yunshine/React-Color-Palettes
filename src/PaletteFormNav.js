@@ -25,6 +25,7 @@ const styles = theme => ({
     }),
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     height: "64px",
   },
   appBarShift: {
@@ -40,14 +41,20 @@ const styles = theme => ({
     marginRight: 20,
   },
   navBtns: {
-
+    marginRight: "1rem",
+    "& a": {
+      textDecoration: "none",
+    },
+  },
+  button: {
+    margin: "0 0.5rem",
   },
 });
 
 class PaletteFormNav extends Component {
   constructor(props) {
     super(props);
-    this.state = { newPaletteName: "", formShowing: false };
+    this.state = { newPaletteName: "", formShowing: false, };
     this.handleChange = this.handleChange.bind(this);
     this.showForm = this.showForm.bind(this);
   }
@@ -88,12 +95,11 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           
-            <div classname={classes.navtBns}>
-   
-              <Link exact to="/">
-                <Button variant="contained" color="secondary">Back to Palettes</Button>
+            <div className={classes.navBtns}>
+              <Link exact to="/" className={classes.link}>
+                <Button variant="contained" color="secondary" className={classes.button}>Back to Palettes</Button>
               </Link>
-              <Button variant="contained" color="primary" onClick={this.showForm}>
+              <Button variant="contained" color="primary" className={classes.button} onClick={this.showForm}>
                 Save Palette
               </Button>
             </div>
