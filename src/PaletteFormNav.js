@@ -31,18 +31,6 @@ class PaletteFormNav extends Component {
     });
   }
 
-  // PaletteFormNav() {
-  //   this.setState({ key: value });
-  // }
-
-  // handleClick() {
-  //   this.newFunction();
-  //   this.setState(oldState => {
-  //     return { score: oldState + 3 };
-  //   })
-  // }
-  // => This is the way and the syntax to update an existing state, not:   this.setState({ score: this.state.score + 3 });
-
   render() {
     const { classes, open } = this.props;
     const { newPaletteName } = this.state;

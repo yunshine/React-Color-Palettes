@@ -1,5 +1,6 @@
 import React from 'react';
 import DraggableColorList from './DraggableColorList';
+import ColorPickerForm from './ColorPickerForm';
 import PaletteFormNav from './PaletteFormNav';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -82,10 +83,8 @@ class NewPaletteForm extends React.Component {
     super(props);
     this.state = { 
       open: true, 
-      currentColor: "turquoise",
       newColorName: "",
       colors: this.props.palettes[0].colors,
-      // newPaletteName: "",
     }
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
@@ -203,26 +202,7 @@ class NewPaletteForm extends React.Component {
               </Button>
             <Button variant="contained" color="primary" onClick={this.addRandomColor} disabled={paletteIsFull}>Random Color</Button>
           </div>
-          <ChromePicker color={this.state.currentColor} onChangeComplete={this.updateCurrentColor} />
-
-          <ValidatorForm onSubmit={this.addNewColor}>
-            <TextValidator 
-            value={this.state.newColorName} 
-            name="newColorName" 
-            onChange={this.handleChange} 
-            validators={["required", "isColorNameUnique", "isColorUnique"]} 
-            errorMessages={["This field is required", "Color name must be unique", "Color must be unlique"]}
-            />
-            <Button 
-            variant="contained" 
-            color="primary" 
-            style={{backgroundColor: paletteIsFull ? "grey" : this.state.currentColor}} 
-            disabled={paletteIsFull} 
-            type="submit" 
-            >
-              {paletteIsFull ? "Palette is Full" : "Add Color"}
-            </Button>
-          </ValidatorForm>
+          <ColorPickerForm paletteIsFull={paletteIsFull} />
         </Drawer>
         
         <main
