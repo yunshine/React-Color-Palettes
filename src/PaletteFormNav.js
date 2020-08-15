@@ -24,8 +24,16 @@ class PaletteFormNav extends Component {
   
   constructor(props) {
     super(props);
-    // this.state = { key: value };
+    this.state = { newPaletteName: "" };
     // this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    ValidatorForm.addValidationRule('isPaletteNameUnique', (value) =>
+    this.props.palettes.every(
+      ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+    )
+  );
   }
 
   // PaletteFormNav() {
@@ -41,6 +49,7 @@ class PaletteFormNav extends Component {
   // => This is the way and the syntax to update an existing state, not:   this.setState({ score: this.state.score + 3 });
 
   render() {
+    const { classes, open } = this.props;
     return (
       <div className="PaletteFormNav">
         <CssBaseline />
