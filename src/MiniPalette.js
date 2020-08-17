@@ -13,7 +13,8 @@ class MiniPalette extends Component {
 
   deletePalette(e) {
     e.stopPropagation();
-    alert("alert");
+    // alert("alert");
+    this.props.handleDelete(this.props.id);
   }
 
   render() {
