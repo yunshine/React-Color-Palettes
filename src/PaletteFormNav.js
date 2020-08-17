@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from "@material-ui/core/Button";
 import { withStyles } from '@material-ui/core/styles';
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+// import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 const drawerWidth = 400;
 
