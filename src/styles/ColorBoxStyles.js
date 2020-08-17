@@ -12,7 +12,19 @@ export default {
     "&:hover button": {
       opacity: "1",
       transition: "0.3s",
-    }
+    },
+    // [sizes.down("sm")]: {
+      
+    // },
+    // [sizes.up("sm")]: {
+      
+    // },
+    // "@media (max-width: 500px)": {
+    //   width: "100%",
+    // },
+    // "@media (max-width: 900px)": {
+    //   width: "50%",
+    // },
   },
   boxContent: {
     position: "absolute",
