@@ -6,8 +6,9 @@
     padding: "0.5rem",
     position: "relative",
     overflow: 'hidden',
-    "&:hover": {
-      cursor: "pointer"
+    cursor: "pointer",
+    "&:hover svg": {
+      opacity: "1",
     }
   },
   colors: {
@@ -39,4 +40,20 @@
     position: "relative",
     marginBottom: "-3.5px",
   },
+  delete: {
+
+  }, 
+  deleteIcon: {
+    color: "white",
+    backgroundColor: "#eb3d30",
+    width: "20px",
+    height: "20px",
+    position: "absolute",
+    right: "0px",
+    top: "0px",
+    padding: "8px",
+    zIndex: "3",
+    opacity: "0",
+    transition: "all 3s ease-in-out",
+  }, 
 };
