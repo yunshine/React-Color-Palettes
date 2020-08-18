@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import sizes from "./sizes";
 
 export default {
   colorBox: {
@@ -13,9 +14,18 @@ export default {
       opacity: "1",
       transition: "0.3s",
     },
-    // [sizes.down("sm")]: {
-      
-    // },
+    [sizes.down("lg")]: {
+      width: "25%",
+      height: props => props.showingFullPalette ? "20%" : "0%",
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+      height: props => props.showingFullPalette ? "10%" : "0%",
+    },
+    [sizes.down("xs")]: {
+      height: props => props.showingFullPalette ? "5%" : "10%",
+      width: "100%",
+    },
     // [sizes.up("sm")]: {
       
     // },
