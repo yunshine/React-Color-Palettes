@@ -1,5 +1,6 @@
 // import { withTheme, withStyles } from "@material-ui/styles";
 import sizes from "./sizes";
+import background from "./background.svg";
 
 export default {
   root: {
@@ -8,6 +9,10 @@ export default {
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
+    backgroundColor: "blue",
+     /* background by SVGBackgrounds.com */
+    backgroundImage: `url(${background})`,
+    overflow: "scroll",
   },
   container: {
     width: "50%",
@@ -43,7 +48,7 @@ export default {
     },
     [sizes.down("xs")]: {
       gridTemplateColumns: "repeat(1, 100%)",
-      gridGap: "1rem",
+      gridGap: "1.4rem",
     },
   },
 };
