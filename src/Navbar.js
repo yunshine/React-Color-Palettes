@@ -38,7 +38,7 @@ class Navbar extends Component {
           <Link exact to="/">reactcolorpalettes</Link>
         </div>
         {showingAllColors && (
-          <div className="slider-container">
+          <div className={classes.sliderContainer}>
             <span>Level: {level}</span>
             <div className={classes.slider}>
               <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={changeLevel} />
