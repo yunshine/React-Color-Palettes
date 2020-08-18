@@ -37,6 +37,10 @@ export default {
       color: "white",
     }
   },
+  heading: {
+    fontSize: "2rem",
+    color: "black",
+  },
   palettes: {
     boxSizing: "border-box",
     width: "100%",
