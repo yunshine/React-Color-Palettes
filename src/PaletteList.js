@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
+import Dialog from '@material-ui/core/Dialog';
+import blue from '@material-ui/core/colors/blue';
+import red from '@material-ui/core/colors/red';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Avatar from '@material-ui/core/Avatar';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
 // import './PaletteList.css';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./styles/PaletteListStyles";
@@ -30,6 +44,27 @@ class PaletteList extends Component {
             </TransitionGroup>
           {/* </div> */}
         </div>
+        <Dialog open={true}>
+          <DialogTitle>Delete this palette?</DialogTitle>
+          <List>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar style={{ backgroundColor: blue[100], color: blue[600] }}>
+                  <CheckIcon></CheckIcon>
+                  </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Delete" />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar>
+              <Avatar style={{ backgroundColor: red[100], color: red[600] }}>
+                  <CloseIcon></CloseIcon>
+                  </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Cancel" />
+            </ListItem>
+          </List>
+        </Dialog>
       </div>
     );
   }
