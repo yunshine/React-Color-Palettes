@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import ColorBox from './ColorBox';
 import PaletteFooter from './PaletteFooter';
 import 'rc-slider/assets/index.css';
-import './Palette.css';
+// import './Palette.css';
 import styles from './styles/PaletteStyles';
 import { withStyles } from '@material-ui/core/styles';
 
