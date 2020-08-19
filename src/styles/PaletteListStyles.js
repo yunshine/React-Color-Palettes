@@ -43,8 +43,18 @@ export default {
     alignItems: "center",
     color: "white",
     "& a": {
+      // marginRight: "1.5rem",
       color: "white",
-    }
+      fontWeight: "500",
+      backgroundColor: "#0909a2",
+      padding: "8px",
+      borderRadius: "4px",
+      textDecoration: "none",
+      transition: "0.24s",
+    },
+    "& a:hover": {
+      backgroundColor: "#2b2bcb",
+    },
   },
   heading: {
     fontSize: "2rem",
