@@ -13,7 +13,7 @@ export default {
     },
   },
   root: {
-    backgroundColor: "grey",
+    // backgroundColor: "grey",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
