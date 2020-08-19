@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import chroma from 'chroma-js';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-// import './ColorBox.css';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './styles/ColorBoxStyles';
+// import './ColorBox.css';
 
 class ColorBox extends Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class ColorBox extends Component {
         <div className={classNames(classes.copyMsg, {[classes.showMessage]: copied})}>
           <h1 className={isLightColor && "dark-text"}>copied!</h1>
           {/* <p className={isLightColor && "dark-text"}>{this.props.background}</p> */}
-          <p className={classes.copyText}>{this.props.background}</p>
+          <p className={classes.copyText}>{background}</p>
         </div>
 
           <div className="copy-container">
