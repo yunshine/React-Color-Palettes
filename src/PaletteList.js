@@ -22,18 +22,24 @@ class PaletteList extends Component {
     super(props);
     this.state ={
       openDeleteDialog: false,
+      deletingId: "",
     };
     this.openDialog = this.openDialog.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
-
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  openDialog() {
-    this.setState({ openDeleteDialog: true });
+  openDialog(id) {
+    this.setState({ openDeleteDialog: true, deletingId: id, });
   }
   
   closeDialog() {
-    this.setState({ openDeleteDialog: false });
+    this.setState({ openDeleteDialog: false, deletingId: "" });
+  }
+  
+  handleDelete() {
+    this.props.deletePalette(this.state.deletingId);
+    this.closeDialog();
   }
   
   goToPalette(id) {
@@ -41,8 +47,8 @@ class PaletteList extends Component {
   }
 
   render() {
-    const { palettes, classes } = this.props;
-    const { openDeleteDialog } = this.state;
+    const { palettes, classes, deletePalette } = this.props;
+    const { openDeleteDialog, deletingId } = this.state;
 
     return (
       <div className={classes.root}>
@@ -60,7 +66,7 @@ class PaletteList extends Component {
                   key={palette.id} 
                   id={palette.id} 
                   // handleDelete={this.props.deletePalette} 
-                  handleDelete={this.openDialog} 
+                  openDialog={this.openDialog} 
                   handleClick={() => this.goToPalette(palette.id)} 
                   />
                 </CSSTransition>
@@ -71,7 +77,7 @@ class PaletteList extends Component {
         <Dialog open={openDeleteDialog} aria-labelledby="delete-dialog-title" onClose={this.closeDialog}>
           <DialogTitle id="delete-dialog-title">Delete This Palette?</DialogTitle>
           <List>
-            <ListItem button>
+            <ListItem button onClick={this.handleDelete}>
               <ListItemAvatar>
                 <Avatar style={{ backgroundColor: blue[100], color: blue[600] }}>
                   <CheckIcon></CheckIcon>
