@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from "@material-ui/core/Button";
 import styles from "./styles/NewPaletteFormStyles";
+import seedColors from './seedColors';
 
 class NewPaletteForm extends React.Component {
   static defaultProps = {
@@ -21,7 +22,7 @@ class NewPaletteForm extends React.Component {
     super(props);
     this.state = { 
       open: true, 
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
     }
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
